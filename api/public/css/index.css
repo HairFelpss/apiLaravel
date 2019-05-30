@@ -1,0 +1,18 @@
+body {
+    background: #20214f;
+}
+.container{
+    padding-top: 2%;
+    width: 50%;
+}
+.cardContainer{
+    margin: auto;
+}
+.imgDIv{
+    text-align: center;
+    margin: auto;
+}
+
+.logoImg{
+    width: 75%;
+}
