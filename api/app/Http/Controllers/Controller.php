@@ -21,6 +21,37 @@ class Controller extends BaseController
     }
 
     public function handleSearch(Request $request){     
+  
+        $input = $request->input('input');
+
+        $apiQuote = 'https://api.iextrading.com/1.0/stock/' . $input . '/quote';
+        $apiCompany = 'https://api.iextrading.com/1.0/stock/' . $input . '/company';
+
+        $url = array($apiQuote, $apiCompany);
+
+        $client = array();
+        $response = array(); 
+        $json = array();
+        $object = array();
+
+        for($i = 0; $i < count($url); $i++){
+            array_push($client, new Client(['base_uri' => $url[$i]]));
+            array_push($response, $client[$i]->request('GET'));
+            array_push($json, $response[$i]->getBody());
+            array_push($object, json_decode($json[$i]));
+            
+        }
+        $latestPrice = $object[0]->latestPrice ;
+        $name = $object[0]->companyName;
+        $description = $object[1]->description;
+        $CEO = $object[1]->CEO;
+
+        return view('index', compact('name', 'latestPrice', 'description', 'CEO')); 
+        
+
+
+        /*
+          
         $input = $request->input('input');
 
         $apiQuote = 'https://api.iextrading.com/1.0/stock/' . $input . '/quote';
@@ -48,17 +79,7 @@ class Controller extends BaseController
         $summary = $object[2][0]->summary;
 
         return view('index', compact('name', 'latestPrice', 'logo', 'headline', 'summary')); 
-
-
-        /*if ($price && $name) {
-            $sql = 'INSERT INTO latestPrice(Enterprise, Price)  
-        VALUES(' + $name + ', ' + $price + ')';
-
-
-            connection.query(sql);
-
-            connection.end();
-            **/
+        */
     }
 
 }

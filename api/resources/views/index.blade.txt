@@ -8,6 +8,7 @@
 </head>
 
 <body class='page'>
+
     <section class='container'>
         <section>
             <form action="/" method='post'>
@@ -21,27 +22,33 @@
             </form>
         </section>
     
-        @if(isset($name))
-        <article class="textArticle">
+     @if(isset($name))
+        <article>
+ 
             <div class="card mb-3 cardContainer" style="max-width: 540px;">
                 <div class="row no-gutters">
                         <div class="col-md-4 imgDIv">
-                            <i class="fab fa-angellist"></i>
+                            <img src="{{$logo}}" class="card-img logoImg" alt="...">
                         </div>
                     <div class="col-md-8">
                         <div class="card-body">
                             <h3 class="card-title">{{$name}}</h3>
                             <h6 class="card-subtitle mb-2 text-muted">Selling price ${{$latestPrice}}</h6>
-                            <p class="card-text">{{$CEO}}</p>
-                            <p class="card-text"><small class="text-muted">{{$description}}</small></p>
+                            <p class="card-text">{{$headline}}</p>
+                            <p class="card-text"><small class="text-muted">{{$summary}}</small></p>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
+            
         </article>
         @endif
     </section>
+
+
+
 </body>
 
 </html>
       
+ 
