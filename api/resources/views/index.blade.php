@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h3 class="card-title">{{$name}}</h3>
                             <h6 class="card-subtitle mb-2 text-muted">Selling price ${{$latestPrice}}</h6>
-                            <p class="card-text">{{$CEO}}</p>
+                            <p class="card-text">Current CEO: {{$CEO}}</p>
                             <p class="card-text"><small class="text-muted">{{$description}}</small></p>
                         </div>
                     </div>
